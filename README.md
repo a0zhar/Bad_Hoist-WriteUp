@@ -1,12 +1,18 @@
 # Sleirsgoevy's version of Bad_Hoist (Write-up) | CVE-2018-4386
-## Background information about the PS4:
-The PlayStation 4 Console features a custom AMD x86-64 CPU (8 cores). It's Operating System also known as Orbis OS is based on the FreeBSD (9.0) Release (with parts of NetBSD as well); and includes a wide variety of additional open source software as well, such as Mono VM, and WebKit. 
+
+> [!Note]
+> **Background information about the PS4:** <br>
+> The PlayStation 4 Console features a custom AMD x86-64 CPU (8 cores), it's Orbis OS is based on FreeBSD (v9.0) with parts of NetBSD as well.
+> It also includes a wide variety of additional open source software as well, such as Mono VM, and WebKit. 
 
 ## PS4 Internet Browser:
-The Internet Browser used by the PS4 is actually built with the Open Sourced WebKit Project. This is the open source layout engine which renders web pages in the browsers for iOS, Wii U, 3DS, PS Vita, and the PS4. 
+The Internet Browser used by the PS4 is actually built with the Open Sourced WebKit Project. 
+This is the open source layout engine which renders web pages in the browsers for iOS, Wii U, 3DS, PS Vita, and the PS4. 
 
 ### WebProcess:
-The PS4 Internet Browser actually consists of 2 separate processes. The one which we hijack for code execution is the WebKit Core Process (which handles parsing HTML and CSS, decoding images, and executing JavaScript for example). The other one handle's everything else: displaying graphics, receiving controller input, managing history and bookmarks, etc.
+The PS4 Internet Browser actually consists of 2 separate processes. 
+The one which we hijack for code execution is the WebKit Core Process (which handles parsing HTML and CSS, decoding images, and executing JavaScript for example). 
+The other one handle's everything else: displaying graphics, receiving controller input, managing history and bookmarks, etc.
 
 ### Heap Allocators
 The PS4 WebKit browser employs multiple heap allocators, each serving different components. These are the following:
