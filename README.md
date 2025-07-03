@@ -51,3 +51,11 @@ This Identifier is then used internally for fast property and variable lookups.
 When the exploit enters the for-loop that iterates 1024 times, each iteration creates a new type-confused `WTF::StringImpl` object with 32 new **Structure IDs** returned by the `create_impl()` function . When this type-confused object is used and passed to `trigger()` as the arbitrary object, JSC calls `JSString::toIdentifier()` on it.
 
 `JSString::toIdentifier()` checks certain bits in the structure ID to confirm the object is a valid string or can be treated as one. By generating many objects with different layouts and structure IDs, the exploit increases the chances that at least one will have a structure ID that passes the internal checks in `JSString::toIdentifier()`
+
+
+# Refrences
+- [Project Zero: CVE-2018-4386](https://project-zero.issues.chromium.org/issues/42450731)
+- [Synacktiv's Publication](https://www.synacktiv.com/en/publications/this-is-for-the-pwners-exploiting-a-webkit-0-day-in-playstation-4.html)
+- [Hacking the PS4 (3 Part Series) by CTurt](https://cturt.github.io/ps4.html)
+- [Fire30's Original Bad_Hoist](https://github.com/Fire30/Bad_Hoist)
+- [Sleirsgoevy's Bad_Hoist version](https://github.com/Sleirsgoevy/Bad_Hoist)
